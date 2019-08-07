@@ -19,15 +19,12 @@ public class boardgen extends View {
     private Paint thickpaint = new Paint();
     private Paint thinpaint = new Paint();
     private Paint cellSelect = new Paint();
-    private Paint cellConflict = new Paint();
 
 
 
     boardgen(Context context, AttributeSet attributeSet){
         super(context,attributeSet);
     }
-
-
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -37,7 +34,6 @@ public class boardgen extends View {
     }
     @Override
     protected void onDraw(Canvas canvas) {
-
         cellPerSize = (getWidth()/size);
         fillCellS(canvas);
         drawLines(canvas);
@@ -47,14 +43,13 @@ public class boardgen extends View {
     public void fillCellS(Canvas canvas){
         if(selectedColumn == -1 || selectedColumn == -1){
         }else{
-            for(int r = 0; r <= size; r++){
-                for(int c = 0; c <= size; c++){
+            for(int r = 0; r < size; r++){
+                for(int c = 0; c < size; c++){
                     if(r == selectedRow && c == selectedColumn){
-                        fillCell(canvas,r,c,cellSelect);
-                    }else if(r == selectedRow || c == selectedColumn){
-                        fillCell(canvas,r,c,cellConflict);
-                    }else if(r / 3 == selectedRow/3 && c/3 == selectedColumn/3){
-                        fillCell(canvas,r,c,cellSelect);
+                        if(MainActivity.choose(r,c))fillCell(canvas,r,c,cellSelect);
+                    }
+                    if(MainActivity.grid[r][c] != 0){
+                        putNum(canvas,r,c);
                     }
                 }
             }
@@ -62,21 +57,24 @@ public class boardgen extends View {
     }
 
     public void fillCell(Canvas canvas, int r, int c, Paint paint){
-        canvas.drawRect(c*cellPerSize,r*cellPerSize,(c+1)*cellPerSize,(r+1)*cellPerSize,paint);
+        canvas.drawRoundRect(c*cellPerSize,r*cellPerSize,(c+1)*cellPerSize,(r+1)*cellPerSize,1000,1000,paint);
+        canvas.drawText(MainActivity.choice,(c*cellPerSize)+cellPerSize/3,(r*cellPerSize)+cellPerSize*2/3,thickpaint);
+    }
+    public void putNum(Canvas canvas,int r, int c){
+        canvas.drawText(MainActivity.grid[r][c]+"",(c*cellPerSize)+cellPerSize/3,(r*cellPerSize)+cellPerSize*2/3,thickpaint);
     }
 
     public void drawLines(Canvas canvas){
         thickpaint.setStyle(Paint.Style.STROKE);
-        thickpaint.setColor(Color.GRAY);
+        thickpaint.setColor(Color.parseColor("#3686ff"));
+        thickpaint.setTextSize(65); thickpaint.setLinearText(true);
         thickpaint.setStrokeWidth(13F);
         thinpaint.setStyle(Paint.Style.STROKE);
         thinpaint.setColor(Color.GRAY);
         thinpaint.setStrokeWidth(5F);
 
         cellSelect.setStyle(Paint.Style.FILL_AND_STROKE);
-        cellSelect.setColor(Color.RED);
-        cellConflict.setStyle(Paint.Style.FILL_AND_STROKE);
-        cellConflict.setColor(Color.BLUE);
+        cellSelect.setColor(Color.LTGRAY);
         canvas.drawRect(0F,0F,getWidth(),getHeight(),thickpaint);
 
         Paint paint;

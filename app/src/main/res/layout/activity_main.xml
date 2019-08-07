@@ -6,26 +6,45 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/erase"
+        android:layout_width="66dp"
+        android:layout_height="103dp"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="false"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="12dp"
+        android:onClick="selected"
+        android:layout_marginBottom="34dp"
+        android:text="X"
+        android:textSize="55sp" />
+
     <com.example.sudoku.boardgen
         android:id="@+id/board"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/buttons"/>
+        android:layout_above="@id/buttons"
+        android:layout_marginBottom="61dp" />
 
     <GridLayout
         android:id="@+id/buttons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="11dp"
+        android:layout_marginBottom="15dp"
         android:columnCount="3"
         android:rowCount="3">
+
         <Button
             android:id="@+id/one"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_column="0"
+            android:onClick="selected"
             android:text="1" />
 
         <Button
@@ -34,6 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_column="1"
+            android:onClick="selected"
             android:text="2" />
 
         <Button
@@ -42,6 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_column="2"
+            android:onClick="selected"
             android:text="3" />
 
         <Button
@@ -50,6 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_row="1"
             android:layout_column="0"
+            android:onClick="selected"
             android:text="4" />
 
         <Button
@@ -58,6 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_row="1"
             android:layout_column="1"
+            android:onClick="selected"
             android:text="5" />
 
         <Button
@@ -66,14 +89,16 @@
             android:layout_height="wrap_content"
             android:layout_row="1"
             android:layout_column="2"
+            android:onClick="selected"
             android:text="6" />
 
         <Button
             android:id="@+id/seven"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="87dp"
+            android:layout_height="50dp"
             android:layout_row="2"
             android:layout_column="0"
+            android:onClick="selected"
             android:text="7" />
 
         <Button
@@ -82,6 +107,7 @@
             android:layout_height="wrap_content"
             android:layout_row="2"
             android:layout_column="1"
+            android:onClick="selected"
             android:text="8" />
 
         <Button
@@ -90,6 +116,9 @@
             android:layout_height="wrap_content"
             android:layout_row="2"
             android:layout_column="2"
+            android:onClick="selected"
             android:text="9" />
     </GridLayout>
+
+
 </RelativeLayout>
