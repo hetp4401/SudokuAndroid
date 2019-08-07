@@ -9,12 +9,19 @@ import android.widget.Button;
 import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
+
     static String choice = "";
     static int[][] grid = Sudoku.generateRandom();
+    static int[][] solved = Sudoku.solve(grid);
+    static int correct = Sudoku.clues;
+    static  View screen;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        screen = findViewById(R.id.board);
 
     }
     public static void selected(View view){
@@ -23,19 +30,39 @@ public class MainActivity extends AppCompatActivity {
         if(choice.equals("X")){
             choice = "";
         }
-
+        choose(boardgen.selectedRow,boardgen.selectedColumn);
     }
 
-    public static boolean choose(int y, int x){
+    public static void choose(int y, int x){
+        if(Sudoku.num[y][x] == 1){
+            int add;
+            if(grid[y][x] == solved[y][x]){
+                add = -1;
+            }else{
+                add = 1;
+            }
 
-        if(Sudoku.num[y][x] == 1) {
             if (choice.equals("")) {
                 grid[y][x] = 0;
-            } else {
+            }else {
                 grid[y][x] = Integer.parseInt(choice);
             }
-            return true;
+
+            if(add == -1){
+                if(grid[y][x] == solved[y][x]){
+                    add = 0;
+                }else{
+                    add = -1;
+                }
+            }else{
+                if(grid[y][x] == solved[y][x]){
+                    add = 1;
+                }else{
+                    add = 0;
+                }
+            }
+            correct+=add;
         }
-        return false;
+        screen.invalidate();
     }
 }

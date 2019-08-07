@@ -6,28 +6,27 @@ import java.util.Random;
 public class Sudoku{
 
     static int[][][] squares = {
-            {{1,2,3,10,11,12,19,20,21},
-                    {4,5,6,13,14,15,22,23,24},
-                    {7,8,9,16,17,18,25,26,27}},
-
-            {{28,29,30,37,38,39,46,47,48},
-                    {31,32,33,40,41,42,49,50,51},
-                    {34,35,36,43,44,45,52,53,54}},
-
-            {{55,56,57,64,65,66,73,74,75},
-                    {58,59,60,67,68,69,76,77,78},
-                    {61,62,63,70,71,72,79,80,81}}};
+            {{1,2,3,10,11,12,19,20,21}, {4,5,6,13,14,15,22,23,24}, {7,8,9,16,17,18,25,26,27}},
+            {{28,29,30,37,38,39,46,47,48}, {31,32,33,40,41,42,49,50,51}, {34,35,36,43,44,45,52,53,54}},
+            {{55,56,57,64,65,66,73,74,75}, {58,59,60,67,68,69,76,77,78}, {61,62,63,70,71,72,79,80,81}}};
 
     static int[][] num = new int[9][9];
+    static int clues = 0;
 
 
-    public static int[][] solve(int[][] sudoku){
+    public static int[][] solve(int[][] s){
         int[][] backTrack = new int[9][9];
+        int[][] sudoku = new int[9][9];
+
         for(int i = 0; i < 81; i++) {
-            if(sudoku[i/9][i%9] == 0) {
+            sudoku[i/9][i%9] = s[i/9][i%9];
+            if(s[i/9][i%9] == 0) {
                 backTrack[i/9][i%9] = 1;
+                num[i/9][i%9] = 1;
             }else {
                 backTrack[i/9][i%9] = 0;
+                num[i/9][i%9] = 0;
+                clues++;
             }
         }
 
@@ -67,15 +66,7 @@ public class Sudoku{
                 num = rand.nextInt(8)+1;
             }
             nums[index/9][index%9] = num;
-            index += rand.nextInt(4)+3;
-        }
-
-        for(int i = 0; i < 81; i++) {
-            if(nums[i/9][i%9] == 0) {
-                num[i/9][i%9] = 1;
-            }else {
-                num[i/9][i%9] = 0;
-            }
+            index += rand.nextInt(4)+4;
         }
         return nums;
     }
