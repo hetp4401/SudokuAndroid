@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#4B4747"
     tools:context=".MainActivity">
 
     <Button
@@ -15,8 +16,8 @@
         android:layout_alignParentRight="false"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="12dp"
-        android:onClick="selected"
         android:layout_marginBottom="34dp"
+        android:onClick="selected"
         android:text="X"
         android:textSize="55sp" />
 
@@ -26,6 +27,7 @@
         android:layout_height="match_parent"
         android:layout_above="@id/buttons"
         android:layout_marginBottom="61dp" />
+
 
     <GridLayout
         android:id="@+id/buttons"
@@ -40,85 +42,111 @@
 
         <Button
             android:id="@+id/one"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
             android:layout_row="0"
             android:layout_column="0"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/btncircle"
             android:onClick="selected"
             android:text="1"
-             />
+            android:textColor="#FFB338" />
 
         <Button
             android:id="@+id/two"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
             android:layout_row="0"
             android:layout_column="1"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/btncircle"
             android:onClick="selected"
-            android:text="2" />
+            android:text="2"
+            android:textColor="#FFB338" />
 
         <Button
             android:id="@+id/three"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
             android:layout_row="0"
             android:layout_column="2"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/btncircle"
             android:onClick="selected"
-            android:text="3" />
+            android:text="3"
+            android:textColor="#FFB338" />
 
         <Button
             android:id="@+id/four"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
             android:layout_row="1"
             android:layout_column="0"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/btncircle"
             android:onClick="selected"
-            android:text="4" />
+            android:text="4"
+            android:textColor="#FFB338" />
 
         <Button
             android:id="@+id/five"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
             android:layout_row="1"
             android:layout_column="1"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/btncircle"
             android:onClick="selected"
-            android:text="5" />
+            android:text="5"
+            android:textColor="#FFB338" />
 
         <Button
             android:id="@+id/six"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
             android:layout_row="1"
             android:layout_column="2"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/btncircle"
             android:onClick="selected"
-            android:text="6" />
+            android:text="6"
+            android:textColor="#FFB338" />
 
         <Button
             android:id="@+id/seven"
-            android:layout_width="87dp"
-            android:layout_height="50dp"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
             android:layout_row="2"
             android:layout_column="0"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/btncircle"
             android:onClick="selected"
-            android:text="7" />
+            android:text="7"
+            android:textColor="#FFB338" />
 
         <Button
             android:id="@+id/eight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
             android:layout_row="2"
             android:layout_column="1"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/btncircle"
             android:onClick="selected"
-            android:text="8" />
+            android:text="8"
+            android:textColor="#FFB338" />
 
         <Button
             android:id="@+id/nine"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
             android:layout_row="2"
             android:layout_column="2"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/btncircle"
             android:onClick="selected"
-            android:text="9" />
+            android:text="9"
+            android:textColor="#FFB338" />
     </GridLayout>
 
 

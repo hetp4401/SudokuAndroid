@@ -36,8 +36,8 @@ public class boardgen extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         cellPerSize = (getWidth()/size);
-        fillCellS(canvas);
         drawLines(canvas);
+        fillCellS(canvas);
 
     }
 
@@ -80,7 +80,7 @@ public class boardgen extends View {
         thinpaint.setStrokeWidth(5F);
 
         cellSelect.setStyle(Paint.Style.FILL_AND_STROKE);
-        cellSelect.setColor(Color.LTGRAY);
+        cellSelect.setColor(Color.parseColor("#ffb338"));
         canvas.drawRect(0F,0F,getWidth(),getHeight(),thickpaint);
 
         Paint paint;
@@ -92,8 +92,8 @@ public class boardgen extends View {
             }
             canvas.drawLine(i*cellPerSize,0F,i*cellPerSize,getHeight(),paint);
             canvas.drawLine(0F,i*cellPerSize,getWidth(),i*cellPerSize,paint);
-
         }
+        thickpaint.setColor(Color.parseColor("#d9d7d4"));
     }
     public void touch( float r, float c){
         selectedRow = (int)(c/cellPerSize);

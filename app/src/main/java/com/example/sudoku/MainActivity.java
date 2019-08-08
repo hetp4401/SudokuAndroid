@@ -1,14 +1,16 @@
 package com.example.sudoku;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import java.util.Arrays;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
     static String choice = "";
     static int[][] grid = Sudoku.generateRandom();
@@ -23,18 +25,34 @@ public class MainActivity extends AppCompatActivity {
 
         screen = findViewById(R.id.board);
 
+
+        String s= "";
+        for(int i = 0; i < 81; i++){
+            if(grid[i/9][i%9] == 0){
+                s+=".";
+            }else{
+                s+=grid[i/9][i%9]+"";
+            }
+        }
+        Log.i("sudoku",s);
+
     }
-    public static void selected(View view){
+
+    public void winGame(){
+       startActivity(new Intent(MainActivity.this,gameOver.class));
+    }
+    public void selected(View view){
         Button button = (Button) view;
         choice = button.getText().toString();
         if(choice.equals("X")){
             choice = "";
+            startActivity(new Intent(MainActivity.this,gameOver.class));
         }
         choose(boardgen.selectedRow,boardgen.selectedColumn);
     }
 
-    public static void choose(int y, int x){
-        if(Sudoku.num[y][x] == 1){
+    public  void choose(int y, int x){
+        if(y > -1 && x > -1 && Sudoku.num[y][x] == 1){
             int add;
             if(grid[y][x] == solved[y][x]){
                 add = -1;
@@ -62,6 +80,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             correct+=add;
+
+            if(correct == 81) winGame();
+
         }
         screen.invalidate();
     }
